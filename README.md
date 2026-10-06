@@ -24,23 +24,40 @@ Users can create or join rooms, watch the same YouTube video, synchronize playba
 
 ## Tech Stack
 
-### Frontend
+**Frontend**
 - React
 - Vite
 - React Router
 - Socket.IO Client
-- react-youtube
+- React YouTube
 
-### Backend
+**Backend**
 - Node.js
 - Express
 - Socket.IO
 
-### Real-Time Communication
-Socket.IO is used for bidirectional real-time communication between the frontend and backend.
+**Deployment**
+- Vercel
+- Render
 
-### Video
-YouTube IFrame Player API through `react-youtube`.
+---
+
+## Architecture
+
+```text
+React Frontend
+      |
+      | Socket.IO
+      v
+Node.js + Express + Socket.IO
+      |
+      v
+RoomManager
+      |
+      +-- Rooms
+      +-- Participants
+      +-- Roles
+      +-- Video State
 
 ## Project Structure
 
@@ -65,3 +82,18 @@ youtube-watch-party/
 │           └── socket.js
 │
 └── README.md
+
+
+## Live Demo
+
+**Frontend:**  
+https://youtube-watch-party-azure.vercel.app
+
+**Backend:**  
+https://youtube-watch-party-yfqg.onrender.com
+
+**Health Check:**  
+https://youtube-watch-party-yfqg.onrender.com/api/health
+
+**Repository**
+https://github.com/Aryannn-07/youtube-watch-party
