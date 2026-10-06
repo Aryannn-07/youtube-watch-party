@@ -8,7 +8,7 @@ Users can create or join rooms, watch the same YouTube video, synchronize playba
 
 - Create a watch party room with a unique room code
 - Join an existing room using a room code
-- Host and Participant roles
+- Host, Moderator, and Participant roles
 - Promote Participants to Moderator
 - Participant request for Moderator access
 - Remove participants from a room
@@ -24,23 +24,21 @@ Users can create or join rooms, watch the same YouTube video, synchronize playba
 
 ## Tech Stack
 
-**Frontend**
+### Frontend
 - React
 - Vite
 - React Router
 - Socket.IO Client
 - React YouTube
 
-**Backend**
+### Backend
 - Node.js
 - Express
 - Socket.IO
 
-**Deployment**
+### Deployment
 - Vercel
 - Render
-
----
 
 ## Architecture
 
@@ -61,28 +59,78 @@ RoomManager
 
 ## Project Structure
 
-```text
 youtube-watch-party/
 │
 ├── backend/
-│   ├── package.json
+│   ├── models/
+│   │   ├── Participant.js
+│   │   └── Room.js
+│   │
+│   ├── services/
+│   │   └── RoomManager.js
+│   │
+│   ├── socket/
+│   │   └── socketHandlers.js
+│   │
 │   ├── server.js
-│   ├── roomManager.js
-│   └── socket/
-│       └── socketHandlers.js
+│   ├── test-e2e.js
+│   ├── package.json
+│   └── package-lock.json
 │
 ├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   └── Room.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── socket.js
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   └── index.css
+│   │
 │   ├── package.json
-│   └── src/
-│       ├── App.jsx
-│       ├── pages/
-│       │   ├── Home.jsx
-│       │   └── Room.jsx
-│       └── services/
-│           └── socket.js
+│   ├── package-lock.json
+│   └── vite.config.js
 │
-└── README.md
+├── README.md
+└── .gitignore
 
+
+## Roles
+Host
+The user who creates the room.
+Permissions:
+- Play
+- Pause
+- Seek
+- Change Video
+- Assign Moderator
+- Approve Moderator requests
+- Remove participants
+Moderator
+A participant promoted by the Host.
+Permissions:
+- Play
+- Pause
+- Seek
+- Change Video
+Participant
+The default role for users joining a room.
+Can:
+- Watch the synchronized video
+- Use chat
+- Request Moderator access
+
+## Local Setup
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev
 
 ## Live Demo
 
